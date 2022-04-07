@@ -1,15 +1,19 @@
-package com.juanantonio.demo.entitys;
+package com.juanantonio.demo.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	private String nombre;
@@ -19,6 +23,9 @@ public class Usuario {
 	private String password;
 	
 	private String email;
+	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<Agenda> agenda;
 
 	//private String agenda;
 	
@@ -60,6 +67,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Agenda> getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(List<Agenda> agenda) {
+		this.agenda = agenda;
 	}
 	
 	

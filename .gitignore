@@ -40,3 +40,4 @@ target
 secrets.yml
 .gradletasknamecache
 .sts4-cache
+target/classes/META-INF/maven/com.juanantonio/MyGeneral/pom.properties

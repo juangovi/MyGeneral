@@ -1,9 +1,14 @@
-package com.juanantonio.demo.entitys;
+package com.juanantonio.demo.entities;
 
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 
 @Entity
 public class Contacto {
@@ -20,7 +25,8 @@ public class Contacto {
 	
 	private String nombreCeo;
 	
-	private Long agendaId;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Agenda agenda;
 	
 	public String getType() {
 		return type;
@@ -62,12 +68,13 @@ public class Contacto {
 		this.nombreCeo = nombreCeo;
 	}
 
-	public Long getAgendaId() {
-		return agendaId;
+	public Agenda getAgenda() {
+		return agenda;
 	}
 
-	public void setAgendaId(Long agendaId) {
-		this.agendaId = agendaId;
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
+
 
 }
