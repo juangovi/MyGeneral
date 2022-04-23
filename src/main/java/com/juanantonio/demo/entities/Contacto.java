@@ -2,12 +2,12 @@ package com.juanantonio.demo.entities;
 
 
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 //import javax.persistence.ManyToOne;
 
 @Entity
@@ -24,9 +24,9 @@ public class Contacto {
 	private int cif;
 	
 	private String nombreCeo;
-	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Agenda agenda;
+	 
+//	@ManyToOne(cascade = CascadeType.PERSIST)
+//	private Agenda agenda;
 	
 	public String getType() {
 		return type;
@@ -68,13 +68,13 @@ public class Contacto {
 		this.nombreCeo = nombreCeo;
 	}
 
-	public Agenda getAgenda() {
-		return agenda;
-	}
-
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
-	}
+//	public Agenda getAgenda() {
+//		return agenda;
+//	}
+//
+//	public void setAgenda(Agenda agenda) {
+//		this.agenda = agenda;
+//	}
 
 
 }
