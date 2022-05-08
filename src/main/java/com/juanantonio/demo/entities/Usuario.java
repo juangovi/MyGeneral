@@ -29,8 +29,21 @@ public class Usuario {
 
 	//private String agenda;
 	
+	
+	
 	public long getId() {
 		return id;
+	}
+	
+	public Usuario() {
+	}
+
+	public Usuario(String nombre, String apellidos, String password, String email) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.password = password;
+		this.email = email;
 	}
 
 	public void setId(long id) {

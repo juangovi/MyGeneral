@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.juanantonio.demo.entities.Usuario;
 import com.juanantonio.demo.modelo.Response;
+import com.juanantonio.demo.modelo.UsuarioObject;
 import com.juanantonio.demo.repositories.UsuarioRepository;
 
 
@@ -25,10 +26,27 @@ public class ServiceApp {
 			res.setStatus(200);
 			res.setResponse(user);
 			res.setServerMesage("sesion iniciada");
+			session.setAttribute("user", user);
 		}else {
 			res.setStatus(404);
 			res.setResponse(user);
 			res.setServerMesage("usuario no existe");
+		}
+		return res;
+	}
+	
+	public Response<Integer> register(String nombre, String apellidos, String password, String email) {
+		Response<Integer> res=new Response<Integer>();
+		if(!userrepository.existsByEmail(email)) {
+			UsuarioObject user = new UsuarioObject(nombre, apellidos, password, email);
+			userrepository.save(user.getEntity());
+			res.setResponse(1);
+			res.setServerMesage("usuario creado");
+			res.setStatus(200);
+		}else {
+			res.setResponse(2);
+			res.setServerMesage("usuario ya existe");
+			res.setStatus(200);
 		}
 		return res;
 	}

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.juanantonio.demo.entities.Agenda;
@@ -55,17 +54,24 @@ public class ApiController {
 		
 		return user;
 	} 
-	@GetMapping("/bye")
-	public Optional<Usuario> recoger() {
-		Usuario user =repository.findById(8L).get();
-		Contacto con = new Contacto();
-		user.getAgenda().get(0).getContactos().add(con);
-		repository.save(user);
-		return repository.findById(8L);
-	}
+//	@GetMapping("/bye")
+//	public Optional<Usuario> recoger() {
+//		Usuario user =repository.findById(8L).get();
+//		Contacto con = new Contacto();
+//		user.getAgenda().get(0).getContactos().add(con);
+//		repository.save(user);
+//		return repository.findById(8L);
+//	}
 	@PostMapping("/login")
 	public Response<Usuario> login(@RequestBody Map<String,Object> body,HttpSession sesion) {
 		return service.login(sesion, (String)body.get("email"), (String)body.get("password"));
 		//return null;
 	}
+	
+	@PostMapping("/newuser")
+	public Response<Usuario> newuser(@RequestParam String a) {
+		return null;
+		//return null;
+	}
+	
 }
